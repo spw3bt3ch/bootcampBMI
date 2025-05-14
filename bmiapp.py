@@ -36,18 +36,20 @@ with tab2:
         st.write("Get to know your Body Mass Index")
         weight = st.number_input("WEIGHT (Kg) xx")
         height = st.number_input("HEIGHT (m) x.xx")
+        calculate_button = st.button("Calculate BMI")
         bmi = weight / (height * height)
+        if calculate_button:
+            st.header(f"BMI: {bmi:.2f}")
 
-        st.header(f"BMI: {bmi:.2f}")
-
-        if bmi < 18.5:
-            st.error("You are underweight")
-        elif 18.5 <= bmi < 25:
-            st.success("Your BMI is normal")
-        elif 25 <= bmi < 30:
-            st.warning("You are Overweight")
-        elif bmi >= 30:
-            st.error("You are Obese")
+            if bmi < 18.5:
+                st.error("You are underweight")
+            elif 18.5 <= bmi < 25:
+                st.success("Your BMI is normal")
+                st.balloons()
+            elif 25 <= bmi < 30:
+                st.warning("You are Overweight")
+            elif bmi >= 30:
+                st.error("You are Obese")
     except ZeroDivisionError:
         st.info("Enter a valid input")
 
